@@ -1,0 +1,73 @@
+<section class="section hero">
+  <div class="hero-inner">
+    {{search submit=false instant=true class='search search-full'}}
+    </div>
+<!-- This is my custom code to add the knowledge-base content under the search bar-->
+  <div>
+    <a href="#community">Community</a>
+  </div>
+  <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          <li class="blocks-item blocks-item-homepage">
+            <a href='{{url}}' class="blocks-item-link blocks-item-link-homepage">
+              <h4 class="blocks-item-title">{{name}}</h4>
+              <p class="blocks-item-description">{{excerpt description}}</p>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+</section>
+
+
+<div class="container">
+  <section class="section knowledge-base">
+<!--    <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          <li class="blocks-item">
+            <a href='{{url}}' class="blocks-item-link">
+              <h4 class="blocks-item-title">{{name}}</h4>
+              <p class="blocks-item-description">{{excerpt description}}</p>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+-->
+
+    {{#if promoted_articles}}
+      <section class="articles">
+        <h3>{{t 'promoted_articles'}}</h3>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item">
+              <a href="{{url}}">
+                {{title}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+  </section>
+
+  {{#if help_center.community_enabled}}
+    <section class="section community">
+        <h2>{{t 'community'}}</h2>
+      {{#link 'community' class='community-link'}}
+<!--        {{t 'join_conversation'}} -->
+<!--   			Share your ideas and join the conversation -->
+      {{/link}}
+
+      {{#link 'community'}}
+      <div id="community" class="community-image"></div>
+      {{/link}}
+    </section>
+  {{/if}}
+
+  <section class="section activity">
+    {{recent_activity}}
+  </section>
+</div>
